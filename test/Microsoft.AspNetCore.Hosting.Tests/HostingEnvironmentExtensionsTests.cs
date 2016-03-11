@@ -46,17 +46,6 @@ namespace Microsoft.AspNetCore.Hosting.Tests
         }
 
         [Fact]
-        public void SetsConfiguration()
-        {
-            var config = new ConfigurationBuilder().Build();
-            var env = new HostingEnvironment();
-
-            env.Initialize(".", new WebHostOptions(), config);
-
-            Assert.Same(config, env.Configuration);
-        }
-
-        [Fact]
         public void OverridesEnvironmentFromConfig()
         {
             var env = new HostingEnvironment();

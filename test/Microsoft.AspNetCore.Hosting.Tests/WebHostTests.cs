@@ -126,24 +126,6 @@ namespace Microsoft.AspNetCore.Hosting
         }
 
         [Fact]
-        public void FlowsConfig()
-        {
-            var vals = new Dictionary<string, string>
-            {
-                { "Server", "Microsoft.AspNetCore.Hosting.Tests" }
-            };
-
-            var builder = new ConfigurationBuilder()
-                .AddInMemoryCollection(vals);
-            var config = builder.Build();
-            var host = CreateBuilder(config).Build();
-            host.Start();
-            var hostingEnvironment = host.Services.GetService<IHostingEnvironment>();
-            Assert.NotNull(hostingEnvironment.Configuration);
-            Assert.Equal("Microsoft.AspNetCore.Hosting.Tests", hostingEnvironment.Configuration["Server"]);
-        }
-
-        [Fact]
         public void WebHostCanBeStarted()
         {
             var host = CreateBuilder()

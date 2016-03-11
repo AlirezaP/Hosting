@@ -3,7 +3,6 @@
 
 using System;
 using System.IO;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 
@@ -47,8 +46,6 @@ namespace Microsoft.AspNetCore.Hosting.Internal
             }
             var environmentName = options.Environment;
             hostingEnvironment.EnvironmentName = environmentName ?? hostingEnvironment.EnvironmentName;
-
-            hostingEnvironment.Configuration = configuration;
         }
     }
 }
