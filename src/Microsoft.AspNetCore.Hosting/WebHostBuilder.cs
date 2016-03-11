@@ -232,7 +232,12 @@ namespace Microsoft.AspNetCore.Hosting
         {
             if (_startup != null)
             {
-                var startupAssemblyLocation = _startup.ConfigureDelegate.Target.GetType().GetTypeInfo().Assembly.Location;
+                var startupAssembly = _startup.ConfigureDelegate.Target.GetType().GetTypeInfo().Assembly;
+#if NET451
+                var startupAssemblyLocation = new Uri(startupAssembly.CodeBase).LocalPath;
+#else
+                var startupAssemblyLocation = startupAssembly.Location;
+#endif
                 if (!string.IsNullOrEmpty(startupAssemblyLocation))
                 {
                     return Path.GetDirectoryName(startupAssemblyLocation);
@@ -240,7 +245,12 @@ namespace Microsoft.AspNetCore.Hosting
             }
             else if (_startupType != null)
             {
-                var startupAssemblyLocation = _startupType.GetTypeInfo().Assembly.Location;
+                var startupAssembly = _startupType.GetTypeInfo().Assembly;
+#if NET451
+                var startupAssemblyLocation = new Uri(startupAssembly.CodeBase).LocalPath;
+#else
+                var startupAssemblyLocation  = startupAssembly.Location;
+#endif
                 if (!string.IsNullOrEmpty(startupAssemblyLocation)) 
                 {
                     return Path.GetDirectoryName(startupAssemblyLocation);

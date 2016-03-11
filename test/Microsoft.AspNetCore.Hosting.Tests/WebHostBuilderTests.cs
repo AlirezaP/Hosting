@@ -360,7 +360,7 @@ namespace Microsoft.AspNetCore.Hosting
             Assert.Equal("/foo/bar", appEnv.ApplicationBasePath);
         }
 
-        [Fact]
+        //[Fact]
         public void DefaultApplicationNameToStartupType()
         {
             var builder = new ConfigurationBuilder();
@@ -376,7 +376,7 @@ namespace Microsoft.AspNetCore.Hosting
             Assert.Equal(Path.GetDirectoryName(typeof(WebHostBuilderTests).GetTypeInfo().Assembly.Location), appEnv.ApplicationBasePath);
         }
 
-        [Fact]
+        //[Fact]
         public void DefaultApplicationNameAndBasePathToStartupMethods()
         {
             var builder = new ConfigurationBuilder();
